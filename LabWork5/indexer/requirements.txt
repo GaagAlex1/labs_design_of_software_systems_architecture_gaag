@@ -1,0 +1,17 @@
+# core
+pydantic==2.8.2
+pydantic-settings==2.4.0
+
+# db (async)
+SQLAlchemy==2.0.34
+asyncpg==0.29.0
+
+# vector db
+pymilvus==2.5.4
+
+# triton client (http)
+tritonclient[http]==2.49.0
+
+# tree-sitter AST chunking
+tree-sitter>=0.23.2,<0.25
+tree-sitter-language-pack==0.6.1
