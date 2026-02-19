@@ -50,3 +50,14 @@ docker compose --profile integration_testing up --build \
 ```bash
 docker compose down
 ```
+
+### 3) Публикация образа сервиса indexer на Dockerhub
+
+```bash
+docker login
+
+docker build -f indexer/Dockerfile -t galex134/indexer:0.1.0 .
+docker push galex134/indexer:0.1.0
+```
+
+Образ доступен на https://hub.docker.com/repository/docker/galex134/indexer/tags/0.1.0

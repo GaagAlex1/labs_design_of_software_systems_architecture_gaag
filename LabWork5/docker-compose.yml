@@ -86,24 +86,18 @@ services:
     restart: unless-stopped
 
   indexer:
-    build:
-      context: .
-      dockerfile: indexer/Dockerfile
-    profiles: ["integration_testing"]
+    image: galex134/indexer:0.1.0
+    profiles: [ "integration_testing" ]
     environment:
       INDEXER_POSTGRES_DSN: postgresql+asyncpg://indexer:indexer@postgres:5432/indexer
-
       INDEXER_MILVUS_URI: http://milvus:19530
       INDEXER_MILVUS_COLLECTION: chunks
-
       INDEXER_TRITON_URL: triton:8000
       INDEXER_TRITON_MODEL_NAME: qwen3_embedder
       INDEXER_TRITON_INPUT_NAME: TEXT
       INDEXER_TRITON_OUTPUT_NAME: EMBEDDING
-
       INDEXER_EMBEDDING_DIM: "1024"
       INDEXER_EMBEDDING_MODEL: qwen3-0.6b
-
       INDEXER_REPO_ROOT: /repo
       INDEXER_REPO_ID: myrepo
       INDEXER_REPO_REF: main
