@@ -31,5 +31,3 @@ jobs:
           file: LabWork5/indexer/Dockerfile
           push: false
           tags: indexer:ci
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
