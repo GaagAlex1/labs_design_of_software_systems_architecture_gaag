@@ -1,0 +1,35 @@
+name: CI - build indexer
+
+on:
+  push:
+    paths:
+      - "LabWork5/indexer/**"
+      - ".github/workflows/indexer-build.yml"
+  pull_request:
+    paths:
+      - "LabWork5/indexer/**"
+      - ".github/workflows/indexer-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: LabWork5/indexer
+          file: LabWork5/indexer/Dockerfile
+          push: false
+          tags: indexer:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
